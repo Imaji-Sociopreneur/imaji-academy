@@ -32,7 +32,7 @@ Before we start web server make sure we already generate app key, configure `.en
 
 ```shell
 # create copy of .env
-$ cp .env.example .env pppppp
+$ cp .env.example .env
 # create laravel key
 $ php artisan key:generate
 # laravel migrate
