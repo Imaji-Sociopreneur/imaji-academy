@@ -67,7 +67,16 @@
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
                                 <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="#">Get a Quote</a>
+                                  <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+                                      @if (Route::has('login'))
+                                      <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                        @auth
+                                        <a class="btn_1" href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                                        @else
+                                        <a class="btn_1" href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                                        @endif
+                                      </div>
+                                      @endif
                                 </li>
                             </ul>
                         </div>
@@ -92,7 +101,9 @@
                                 his void unto last session for bite. Set have great you'll male grass yielding yielding
                                 man</p>
                             <a href="#" class="btn_1">View Course </a>
-                            <a href="#" class="btn_2">Get Started </a>
+                            @if (Route::has('register'))
+                            <a class="btn_2" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            @endif
                         </div>
                     </div>
                 </div>
