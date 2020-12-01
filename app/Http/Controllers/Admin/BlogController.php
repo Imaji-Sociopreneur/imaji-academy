@@ -25,4 +25,9 @@ class BlogController extends Controller
         return view('pages.blog.edit');
     }
 
+    public function list()
+    {
+        return view('pages.blog.list');
+    }
+
 }

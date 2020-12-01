@@ -33,6 +33,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');
+
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
 
@@ -57,7 +59,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verif
     });
 
     Route::resource('tag',TagController::class)->only(['index','create','edit']);
-    Route::resource('blog',BlogController::class)->only(['index','create','edit']);
+    Route::resource('blog',BlogController::class)->only(['index','create','edit','list']);
     Route::resource('faq',FaqController::class)->only(['index','create','edit']);
     Route::resource('headline',HeadlineController::class)->only(['index','create','edit']);
     Route::resource('user',UserController::class)->only(['index','create','edit']);
