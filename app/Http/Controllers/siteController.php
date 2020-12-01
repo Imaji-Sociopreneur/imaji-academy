@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use Illuminate\Http\Request;
 
 class siteController extends Controller
@@ -16,7 +17,8 @@ class siteController extends Controller
      }
      public function blog()
      {
-         return view('pages.site.blog');
+         $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(1);
+         return view('pages.site.blog',compact('blogs'));
      }
     public function berita()
     {
