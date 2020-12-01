@@ -27,12 +27,13 @@
 
 <body>
 <!--::header part start::-->
-<header class="main_menu home_menu">
+<header class="main_menu single_page_menu">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html"> <img src="{{asset('frontend/img/logo.png')}}" alt="logo"> </a>
+                    <a class="navbar-brand logo_1" href="index.html"> <img src="{{asset('frontend/img/single_page_logo.png')}}" alt="logo"> </a>
+                    <a class="navbar-brand logo_2" href="index.html"> <img src="{{asset('frontend/img/logo.png')}}" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +47,13 @@
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('about') }}">About</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="cource.html">Courses</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Blog</a>
+                                <a class="nav-link" href="blog.html">Blog</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,9 +86,13 @@
         </div>
     </div>
 </header>
-@yield('content')
-
 <!-- Header part end-->
+
+<!-- Content part start-->
+@yield('content')
+<!-- Content part end-->
+
+<!-- footer part start-->
 <footer class="footer-area">
     <div class="container">
         <div class="row justify-content-between">

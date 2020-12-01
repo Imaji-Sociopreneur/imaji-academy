@@ -70,7 +70,7 @@
             <div class="row align-items-sm-center align-items-lg-stretch">
                 <div class="col-md-7 col-lg-7">
                     <div class="learning_img">
-                        <img src="img/learning_img.png" alt="">
+                        <img src="{{asset('frontend/img/learning_img.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-5">
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col-lg-4 col-xl-2 col-sm-4">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-none d-xl-block">
@@ -169,7 +169,7 @@
                                 </div>
                                 <div class="col-xl-2 d-none d-xl-block">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="col-lg-4 col-xl-2 col-sm-4">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-none d-xl-block">
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="col-xl-2 d-none d-xl-block">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col-lg-4 col-xl-2 col-sm-4">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-none d-xl-block">
@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="col-xl-2 d-none d-xl-block">
                                     <div class="testimonial_slider_img">
-                                        <img src="img/testimonial_img_1.png" alt="#">
+                                        <img src="{{asset('frontend/img/testimonial_img_1.png')}}" alt="#">
                                     </div>
                                 </div>
                             </div>
