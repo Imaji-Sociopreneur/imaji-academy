@@ -49,7 +49,7 @@
                                 <a class="nav-link" href="{{ route('about') }}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="cource.html">Berita</a>
+                                <a class="nav-link" href="{{ route('berita') }}">Berita</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('blog') }}">Blog</a>

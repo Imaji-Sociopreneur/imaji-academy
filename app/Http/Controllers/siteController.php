@@ -18,4 +18,8 @@ class siteController extends Controller
      {
          return view('pages.site.blog');
      }
+    public function berita()
+    {
+        return view('pages.site.berita');
+    }
 }
