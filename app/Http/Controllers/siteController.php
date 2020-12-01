@@ -10,4 +10,8 @@ class siteController extends Controller
     {
         return view('pages.site.about');
     }
+     public function contact()
+     {
+         return view('pages.site.contact');
+     }
 }
