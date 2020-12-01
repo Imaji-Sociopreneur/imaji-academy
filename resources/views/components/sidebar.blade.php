@@ -7,7 +7,7 @@
         ]
         ];
 
-    if (Auth::user()->role==1) {
+
         $add =
             [
                 "href" => [
@@ -25,6 +25,7 @@
         ;
         array_push($links, $add);
 
+        if (Auth::user()->role==1) {
         $add =
             [
             "href" => [
