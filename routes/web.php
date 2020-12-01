@@ -35,6 +35,7 @@ Route::get('/', function () {
 
 Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');
 Route::get('contact',[\App\Http\Controllers\siteController::class,'contact'])->name('contact');
+Route::get('blog',[\App\Http\Controllers\siteController::class,'blog'])->name('blog');
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');

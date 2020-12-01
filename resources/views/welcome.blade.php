@@ -52,7 +52,7 @@
                                 <a class="nav-link" href="cource.html">Berita</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Blog</a>
+                                <a class="nav-link" href="{{ route('blog') }}">Blog</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact') }}">Contact</a>

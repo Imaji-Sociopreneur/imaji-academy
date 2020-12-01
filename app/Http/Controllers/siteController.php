@@ -14,4 +14,8 @@ class siteController extends Controller
      {
          return view('pages.site.contact');
      }
+     public function blog()
+     {
+         return view('pages.site.blog');
+     }
 }
