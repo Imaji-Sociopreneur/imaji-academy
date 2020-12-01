@@ -42,7 +42,7 @@
                     <div class="collapse navbar-collapse main-menu-item justify-content-end"
                          id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
@@ -53,15 +53,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">Blog</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                    <a class="dropdown-item" href="elements.html">Elements</a>
-                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact') }}">Contact</a>
