@@ -50,7 +50,7 @@
                                 <a class="nav-link" href="{{ route('about') }}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="cource.html">Courses</a>
+                                <a class="nav-link" href="cource.html">Berita</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="blog.html">Blog</a>
