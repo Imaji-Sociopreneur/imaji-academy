@@ -383,14 +383,15 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($blogs as $blog)
                 <div class="col-sm-6 col-lg-4 col-xl-4">
                     <div class="single-home-blog">
                         <div class="card">
-                            <img src="{{asset('frontend/img/blog/blog_1.png')}}" class="card-img-top" alt="blog">
+                            <img src="{{asset('storage/content/'.$blog->thumbnail)}}" class="card-img-top" alt="blog">
                             <div class="card-body">
                                 <a href="#" class="btn_4">Design</a>
                                 <a href="blog.html">
-                                    <h5 class="card-title">Dry beginning sea over tree</h5>
+                                    <h5 class="card-title">{{$blog->title}}</h5>
                                 </a>
                                 <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
                                 <ul>
@@ -401,42 +402,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4 col-xl-4">
-                    <div class="single-home-blog">
-                        <div class="card">
-                            <img src="{{asset('frontend/img/blog/blog_2.png')}}" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <a href="#" class="btn_4">Developing</a>
-                                <a href="blog.html">
-                                    <h5 class="card-title">All beginning air two likeness</h5>
-                                </a>
-                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
-                                <ul>
-                                    <li> <span class="ti-comments"></span>2 Comments</li>
-                                    <li> <span class="ti-heart"></span>2k Like</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-4">
-                    <div class="single-home-blog">
-                        <div class="card">
-                            <img src="{{asset('frontend/img/blog/blog_3.png')}}" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <a href="#" class="btn_4">Design</a>
-                                <a href="blog.html">
-                                    <h5 class="card-title">Form day seasons sea hand</h5>
-                                </a>
-                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
-                                <ul>
-                                    <li> <span class="ti-comments"></span>2 Comments</li>
-                                    <li> <span class="ti-heart"></span>2k Like</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

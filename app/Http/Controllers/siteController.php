@@ -17,11 +17,12 @@ class siteController extends Controller
      }
      public function blog()
      {
-         $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(1);
+         $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
          return view('pages.site.blog',compact('blogs'));
      }
     public function berita()
     {
-        return view('pages.site.berita');
+        $berita=Content::whereType(3)->whereStatus('accepted')->paginate(5);
+        return view('pages.site.berita',compact('berita'));
     }
 }

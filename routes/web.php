@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HeadlineController;
 use App\Http\Controllers\Admin\NewController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Models\Content;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\ApiTokenController;
@@ -30,7 +31,8 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
+    return view('welcome',compact('blogs'));
 });
 
 Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');

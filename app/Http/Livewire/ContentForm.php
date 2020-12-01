@@ -76,7 +76,7 @@ class ContentForm extends Component
 
         $this->data['slug'] = Str::slug($this->data['title']);
         $this->data['user_id'] = Auth::id();
-        $this->data['type'] = 1;
+        $this->data['type'] = $this->type;
 
         if ($this->file->temporaryUrl() == null) {
             sleep(3);
