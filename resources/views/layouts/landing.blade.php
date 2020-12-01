@@ -44,10 +44,10 @@
                          id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="{{ route('about') }}">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="cource.html">Courses</a>
@@ -65,7 +65,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                             </li>
                             <li class="d-none d-lg-block">
                                 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
