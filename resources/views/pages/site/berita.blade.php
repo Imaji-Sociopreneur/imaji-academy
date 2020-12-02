@@ -46,7 +46,7 @@
                             </div>
                         </article>
                         @endforeach
-                            {{ $brt->links('vendor.pagination.custom') }}
+                            {{ $berita->links('vendor.pagination.custom') }}
                     </div>
                 </div>
                 <div class="col-lg-4">

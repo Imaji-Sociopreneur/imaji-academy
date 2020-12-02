@@ -10,6 +10,6 @@
     </x-slot>
 
     <div>
-        <livewire:faq-form action="create" :type="1"/>
+        <livewire:tag-form action="create" :type="1"/>
     </div>
 </x-app-layout>

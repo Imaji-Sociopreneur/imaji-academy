@@ -10,6 +10,6 @@
     </x-slot>
 
     <div>
-        <livewire:faq-form action="update" :dataId="request()->faq" :type="1"/>
+        <livewire:tag-form action="update" :dataId="request()->faq" :type="1"/>
     </div>
 </x-app-layout>

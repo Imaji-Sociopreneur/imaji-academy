@@ -18,7 +18,7 @@ class TagForm extends Component
 
     protected function getRules()
     {
-        return ['data.question' => 'required|max:255'];
+        return ['data.tag' => 'required|max:255'];
     }
 
     public function mount()

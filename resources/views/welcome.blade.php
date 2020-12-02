@@ -393,7 +393,7 @@
                                 <a href="blog.html">
                                     <h5 class="card-title">{{$blog->title}}</h5>
                                 </a>
-                                <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
+                                <p>{{$blog->contents}}</p>
                                 <ul>
                                     <li> <span class="ti-comments"></span>2 Comments</li>
                                     <li> <span class="ti-heart"></span>2k Like</li>
