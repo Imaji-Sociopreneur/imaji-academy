@@ -74,6 +74,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verif
     Route::resource('user',UserController::class)->only(['index','create','edit']);
     Route::resource('event',EventController::class)->only(['index','create','edit']);
     Route::resource('news',NewController::class)->only(['index','create','edit']);
+    Route::resource('testimonial',\App\Http\Controllers\Admin\TestimonialController::class)->only(['index','create','edit']);
 
 });
 

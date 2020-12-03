@@ -63,8 +63,16 @@
                         ["href" => "admin.tag.index", "text" => "Data Tag"],
                         ["href" => "admin.tag.create", "text" => "Buat Tag"]
                     ]
+                ],
+                [
+                    "section_text" => "Testimonial",
+                    "section_list" => [
+                        ["href" => "admin.testimonial.index", "text" => "Data Testimonial"],
+                        ["href" => "admin.testimonial.create", "text" => "Buat Testimonial"]
+                    ]
                 ]
             ],
+
 
             "text" => "Admin",
             "is_multi" => true,
