@@ -389,7 +389,10 @@
                         <div class="card">
                             <img src="{{asset('storage/content/'.$blog->thumbnail)}}" class="card-img-top" alt="blog">
                             <div class="card-body">
-                                <a href="#" class="btn_4">Design</a>
+                                @foreach($blog->contentTags as $ct)
+                                <a href="#" class="btn_4">{{$ct->tag->tag}}</a>
+                                @endforeach
+{{--                                <a href="#" class="btn_4">Design</a>    --}}
                                 <a href="blog.html">
                                     <h5 class="card-title">{{$blog->title}}</h5>
                                 </a>
@@ -403,6 +406,7 @@
                     </div>
                 </div>
                 @endforeach
+                    {{ $blogs->links('vendor.pagination.custom') }}
             </div>
         </div>
     </section>

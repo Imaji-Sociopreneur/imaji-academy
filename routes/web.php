@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/', function () {
-    $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
+    $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(3);
     return view('welcome',compact('blogs'));
 });
 
