@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/', function () {
-    $jsonurl= "storage/data.json";
+    $jsonurl= "data.json";
     $json = file_get_contents($jsonurl);
     $data = json_decode($json);
 
