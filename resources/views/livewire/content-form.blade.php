@@ -73,8 +73,14 @@
         document.addEventListener('livewire:load', function () {
             window.livewire.on('redirect', () => {
                 setTimeout(function () {
-                    window.location.href = "{{route('admin.blog.index')}}"; //will redirect to your data page (an ex: data.html)
-                }, 2000); //will call the function after 2 secs.
+                    @if ($data ['type']==1)
+                    window.location.href = "{{route('admin.blog.index')}}";//will redirect to your data page (an ex: data.html)
+                    @elseif($data ['type']==2)
+                        window.location.href = "{{route('admin.event.index')}}";
+                    @elseif($data ['type']==3)
+                        window.location.href = "{{route('admin.news.index')}}";
+                        @endif
+                        }, 2000); //will call the function after 2 secs.
             })
 
             $('#summernote').summernote({

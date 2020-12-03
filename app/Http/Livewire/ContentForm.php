@@ -118,6 +118,7 @@ class ContentForm extends Component
         Content::query()
             ->where('id', $this->dataId)
             ->update($this->data);
+        ContentTag::whereContentId($this->dataId)->delete();
 
         foreach ($this->tag as $tag) {
             ContentTag::create([
