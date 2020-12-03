@@ -25,4 +25,5 @@ class siteController extends Controller
         $berita=Content::whereType(3)->whereStatus('accepted')->paginate(5);
         return view('pages.site.berita',compact('berita'));
     }
+
 }

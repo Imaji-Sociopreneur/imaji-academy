@@ -186,31 +186,32 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_member_counter">
-                        <span class="counter">1024</span>
+                        <span class="counter">{{$data[0]->teacher}}</span>
                         <h4>All Teachers</h4>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_member_counter">
-                        <span class="counter">960</span>
+                        <span class="counter">{{$data[0]->student}}</span>
                         <h4> All Students</h4>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_member_counter">
-                        <span class="counter">1020</span>
+                        <span class="counter">{{$data[0]->online}}</span>
                         <h4>Online Students</h4>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_member_counter">
-                        <span class="counter">820</span>
+                        <span class="counter">{{$data[0]->offline}}</span>
                         <h4>Offline Students</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- member_counter counter end -->
 
     <!-- learning part start-->
@@ -365,7 +366,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
