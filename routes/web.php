@@ -35,6 +35,8 @@ Route::get('/', function () {
     $json = file_get_contents($jsonurl);
     $data = json_decode($json);
 
+
+
     $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(3);
     $testimonials=\App\Models\Testimonial::all();
     return view('welcome',compact('blogs','data','testimonials'));
