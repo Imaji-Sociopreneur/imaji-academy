@@ -271,14 +271,14 @@
                         @foreach($testimonials as $testimonial)
                         <div class="testimonial_slider">
                             <div class="row">
-                                <div class="col-lg-8 col-xl-4 col-sm-8 align-self-center">
+                                <div class="col-lg-8 col-xl-6 col-sm-8 align-self-center">
                                     <div class="testimonial_slider_text">
                                         <p>{{$testimonial->testimonial}}</p>
                                         <h4>{{$testimonial->author}}</h4>
                                         <h5> {{$testimonial->position}}</h5>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-xl-2 col-sm-4">
+                                <div class="col-lg-8 col-xl-4 col-sm-8">
                                     <div class="testimonial_slider_img">
                                         <img src="{{asset('storage/content/'.$testimonial->photo)}}" alt="#">
                                     </div>
