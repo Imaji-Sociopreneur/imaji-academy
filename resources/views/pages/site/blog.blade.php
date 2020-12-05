@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
+                                <a class="d-inline-block" href="{{'singleblog'}}">
                                     <h2>{{$blog->title}}</h2>
                                 </a>
                                 <p>That dominion stars lights dominion divide years for fourth have don't stars is that

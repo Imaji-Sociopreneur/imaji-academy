@@ -28,5 +28,9 @@ class siteController extends Controller
         $tag=Tag::all();
         return view('pages.site.berita',compact('berita','tag'));
     }
-
+    public function singleblog()
+    {
+        $tag=Tag::all();
+        return view('pages.site.singleblog', compact('tag'));
+    }
 }

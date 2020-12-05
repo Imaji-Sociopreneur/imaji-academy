@@ -46,6 +46,7 @@ Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name(
 Route::get('contact',[\App\Http\Controllers\siteController::class,'contact'])->name('contact');
 Route::get('blog',[\App\Http\Controllers\siteController::class,'blog'])->name('blog');
 Route::get('berita',[\App\Http\Controllers\siteController::class,'berita'])->name('berita');
+Route::get('singleblog',[\App\Http\Controllers\siteController::class,'singleblog'])->name('singleblog');
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
