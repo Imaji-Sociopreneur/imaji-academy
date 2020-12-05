@@ -36,7 +36,8 @@ Route::get('/', function () {
     $data = json_decode($json);
 
     $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(3);
-    return view('welcome',compact('blogs','data'));
+    $testimonials=\App\Models\Testimonial::all();
+    return view('welcome',compact('blogs','data','testimonials'));
 });
 
 Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');
