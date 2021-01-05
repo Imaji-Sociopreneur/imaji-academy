@@ -19,8 +19,8 @@ class siteController extends Controller
      public function blog()
      {
          $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
-         $tag=Tag::all();
-         return view('pages.site.blog',compact('blogs','tag'));
+//         $tag=Tag::all();
+         return view('pages.site.blog',compact('blogs'));
      }
     public function berita()
     {
