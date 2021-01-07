@@ -19,18 +19,19 @@ class siteController extends Controller
      public function blog()
      {
          $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
-//         $tag=Tag::all();
-         return view('pages.site.blog',compact('blogs'));
+         $tags=\App\Models\Tag::all();
+         return view('pages.site.blog',compact('blogs','tags'));
      }
     public function berita()
     {
         $berita=Content::whereType(3)->whereStatus('accepted')->paginate(5);
-        $tag=Tag::all();
-        return view('pages.site.berita',compact('berita','tag'));
+        $tags=Tag::all();
+        return view('pages.site.berita',compact('berita','tags'));
     }
     public function singleblog()
     {
+        $blogs=Content::whereType(1)->whereStatus('accepted')->get();
         $tag=Tag::all();
-        return view('pages.site.singleblog', compact('tag'));
+        return view('pages.site.singleblog', compact('tag','blogs'));
     }
 }

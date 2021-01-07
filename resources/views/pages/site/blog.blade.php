@@ -27,20 +27,21 @@
                         <article class="blog_item">
                             <div class="blog_item_img">
                                 <img class="card-img rounded-0" src="{{asset('storage/content/'.$blog->thumbnail)}}" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                <a class="blog_item_date">
+                                    <h3>{{$blog->created_at->format('d')}}</h3>
+                                    <p>{{$blog->created_at->format('M')}}</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="{{'singleblog'}}">
+                                <a class="d-inline-block" href="{{'singleblog',$blog->id}}">
                                     <h2>{{$blog->title}}</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>{{$blog->contents}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
+                                    @foreach($tags as $tag)
+                                    <li><a href="#"><i class="far fa-user"></i>{{$tag->tag}}</a></li>
+                                    @endforeach
                                     <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
                                 </ul>
                             </div>
