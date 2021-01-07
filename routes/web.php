@@ -42,6 +42,10 @@ Route::get('/', function () {
     return view('welcome',compact('blogs','data','testimonials'));
 });
 
+Route::post('blog/search/', 'Site@blogSearchPost')->name('blogSearchPost');
+Route::get('blog/search/{search}', 'Site@blogSearch')->name('blogSearch');
+Route::post('berita/search/', 'Site@beritaSearchPost')->name('beritaSearchPost');
+Route::get('berita/search/{search}', 'Site@beritaSearch')->name('beritaSearch');
 Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');
 Route::get('contact',[\App\Http\Controllers\siteController::class,'contact'])->name('contact');
 Route::get('blog',[\App\Http\Controllers\siteController::class,'blog'])->name('blog');

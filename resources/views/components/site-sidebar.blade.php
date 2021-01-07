@@ -1,11 +1,13 @@
 <div class="col-lg-4">
     <div class="blog_right_sidebar">
         <aside class="single_sidebar_widget search_widget">
-            <form action="#">
+            @if(Request::segment(1) == 'blog')
+            <form action="{{route('blogSearchPost')}}" method="post">
+                @csrf
                 <div class="form-group">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder='Search Keyword'
-                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                        <input type="text" class="form-control" name="search_terms" placeholder='Search Keyword'
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" >
                         <div class="input-group-append">
                             <button class="btn" type="button"><i class="ti-search"></i></button>
                         </div>
@@ -13,6 +15,21 @@
                 </div>
                 <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
             </form>
+            @elseif(Request::segment(1) == 'berita')
+                <form action="{{route('beritaSearchPost')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="search_terms" placeholder='Search Keyword'
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" >
+                            <div class="input-group-append">
+                                <button class="btn" type="button"><i class="ti-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
+                </form>
+            @endif
         </aside>
 
         <aside class="single_sidebar_widget post_category_widget">
