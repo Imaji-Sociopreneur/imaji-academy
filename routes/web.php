@@ -42,6 +42,7 @@ Route::get('/', function () {
     return view('welcome',compact('blogs','data','testimonials'));
 });
 
+Route::get('/show/{id}',[\App\Http\Controllers\siteController::class,'show'])->name('show');
 Route::post('blog/search/', 'Site@blogSearchPost')->name('blogSearchPost');
 Route::get('blog/search/{search}', 'Site@blogSearch')->name('blogSearch');
 Route::post('berita/search/', 'Site@beritaSearchPost')->name('beritaSearchPost');
