@@ -23,7 +23,6 @@
                         <div class="feature-img">
                             <img class="img-fluid" src="img/blog/single_blog_1.png" alt="">
                         </div>
-{{--                        @foreach($blogs as $blog)--}}
                         <div class="blog_details">
                             <h2>{{$datareal->title}}
                             </h2>
@@ -54,7 +53,6 @@
 {{--                                self-imposed MCSE training. who has the willpower to actually--}}
 {{--                            </p>--}}
                         </div>
-{{--                        @endforeach--}}
                     </div>
 {{--                    <div class="navigation-top">--}}
 {{--                        <div class="d-sm-flex justify-content-between text-center">--}}
