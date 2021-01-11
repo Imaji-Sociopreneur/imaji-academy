@@ -37,7 +37,7 @@
                                 <a class="d-inline-block" href="{{route('show',$blog->id)}}">
                                     <h2>{{$blog->title}}</h2>
                                 </a>
-                                <p>{{$blog->contents}}</p>
+                                <p>{!!$blog->contents!!}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="far fa-user"></i>{{"Tag"}}</a></li>
                                     <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>

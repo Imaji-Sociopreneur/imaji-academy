@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Content;
 use App\Models\ContentTag;
 use App\Models\Tag;
@@ -20,7 +21,7 @@ class siteController extends Controller
      public function blog()
      {
          $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
-         $tags=\App\Models\Tag::all();
+         $tags= Tag::all();
          $contenttag=ContentTag::all();
 //         dd($blogs);
          return view('pages.site.blog',compact('blogs','tags','contenttag'));
@@ -31,12 +32,14 @@ class siteController extends Controller
         $tags=Tag::all();
         return view('pages.site.berita',compact('berita','tags'));
     }
-    public function singleblog()
+    public function singleblog($id)
     {
         $blogs=Content::whereType(1)->whereStatus('accepted')->get();
         $tag=Tag::all();
         $contenttag=ContentTag::all();
-        return view('pages.site.singleblog', compact('tag','blogs','contenttag'));
+        $comments=Comment::whereContentId($id)->get();
+        $commentcount=count($comments);
+        return view('pages.site.singleblog', compact('tag','blogs','contenttag','comments','commentcount'));
     }
     /**
      * Display the specified resource.
@@ -47,6 +50,8 @@ class siteController extends Controller
     public function show($id)
     {
         $blogs=Content::whereType(1)->whereStatus('accepted')->get();
+        $comments=Comment::whereContentId($id)->get();
+        $commentcount=count($comments);
         $datareal = [];
 
         foreach ($blogs as $b)  {
@@ -58,6 +63,7 @@ class siteController extends Controller
         if (!$datareal) {
             abort(404);
         }
-        return view('pages.site.singleblog', compact('datareal','blogs'));
+
+        return view('pages.site.singleblog', compact('datareal','blogs','comments','commentcount'));
     }
 }

@@ -6,7 +6,10 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HeadlineController;
 use App\Http\Controllers\Admin\NewController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\siteController;
 use App\Models\Content;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
@@ -42,16 +45,19 @@ Route::get('/', function () {
     return view('welcome',compact('blogs','data','testimonials'));
 });
 
-Route::get('/show/{id}',[\App\Http\Controllers\siteController::class,'show'])->name('show');
+Route::get('/show/{id}',[siteController::class,'show'])->name('show');
 Route::post('blog/search/', 'Site@blogSearchPost')->name('blogSearchPost');
 Route::get('blog/search/{search}', 'Site@blogSearch')->name('blogSearch');
 Route::post('berita/search/', 'Site@beritaSearchPost')->name('beritaSearchPost');
 Route::get('berita/search/{search}', 'Site@beritaSearch')->name('beritaSearch');
-Route::get('about',[\App\Http\Controllers\siteController::class,'about'])->name('about');
-Route::get('contact',[\App\Http\Controllers\siteController::class,'contact'])->name('contact');
-Route::get('blog',[\App\Http\Controllers\siteController::class,'blog'])->name('blog');
-Route::get('berita',[\App\Http\Controllers\siteController::class,'berita'])->name('berita');
-Route::get('singleblog',[\App\Http\Controllers\siteController::class,'singleblog'])->name('singleblog');
+Route::get('about',[siteController::class,'about'])->name('about');
+Route::get('contact',[siteController::class,'contact'])->name('contact');
+Route::get('blog',[siteController::class,'blog'])->name('blog');
+Route::get('berita',[siteController::class,'berita'])->name('berita');
+Route::get('singleblog',[siteController::class,'singleblog'])->name('singleblog');
+Route::resource('comment', CommentController::class)->only(['index']);
+Route::post('comment/{id}/',[CommentController::class,'store'])->name('comment-store');
+Route::get('comment/{id}/',[CommentController::class,'destroy'])->name('comment-destroy');
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
@@ -83,7 +89,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verif
     Route::resource('user',UserController::class)->only(['index','create','edit']);
     Route::resource('event',EventController::class)->only(['index','create','edit']);
     Route::resource('news',NewController::class)->only(['index','create','edit']);
-    Route::resource('testimonial',\App\Http\Controllers\Admin\TestimonialController::class)->only(['index','create','edit']);
+    Route::resource('testimonial', TestimonialController::class)->only(['index','create','edit']);
 
 });
 
