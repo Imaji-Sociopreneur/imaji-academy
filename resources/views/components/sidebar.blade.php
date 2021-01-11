@@ -70,6 +70,12 @@
                         ["href" => "admin.testimonial.index", "text" => "Data Testimonial"],
                         ["href" => "admin.testimonial.create", "text" => "Buat Testimonial"]
                     ]
+                ],
+                [
+                    "section_text" => "Comment",
+                    "section_list" => [
+                        ["href" => "admin.comment.index", "text" => "Data Comment"]
+                    ]
                 ]
             ],
 

@@ -90,6 +90,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verif
     Route::resource('event',EventController::class)->only(['index','create','edit']);
     Route::resource('news',NewController::class)->only(['index','create','edit']);
     Route::resource('testimonial', TestimonialController::class)->only(['index','create','edit']);
+    Route::resource('comment', CommentController::class)->only(['index','destroy']);
 
 });
 
