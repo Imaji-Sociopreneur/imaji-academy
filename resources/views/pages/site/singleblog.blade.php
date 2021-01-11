@@ -28,10 +28,10 @@
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="far fa-user"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i>{{$commentcount}} Comments</a></li>
                             </ul>
                             <p class="excert">
-                                {{$datareal->contents}}
+                                {!!$datareal->contents!!}
                             </p>
 {{--                            <div class="quote-wrapper">--}}
 {{--                                <div class="quotes">--}}
@@ -71,8 +71,8 @@
 {{--                    </div>--}}
                     <div class="comments-area">
                         <h4>{{$commentcount}} Comments</h4>
+                        @foreach($comments as $c)
                         <div class="comment-list">
-                            @foreach($comments as $c)
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
@@ -87,14 +87,14 @@
                                                 <h5>
                                                     <a href="#">{{$c->name}}</a>
                                                 </h5>
-                                                <p class="date">{{$c->created_at->format('F j, Y at g:i a')}}</p>
+                                                <p class="date">{{$c->created_at->format('F j, Y  g:i a')}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>

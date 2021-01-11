@@ -52,6 +52,10 @@ class Content extends Model
         return $this->hasMany('App\Models\ContentTag');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'content_id');
+    }
     public static function search($query)
     {
         return empty($query) ? static::query()

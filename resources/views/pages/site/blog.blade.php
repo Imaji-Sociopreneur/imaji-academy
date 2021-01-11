@@ -39,9 +39,15 @@
                                 </a>
                                 <p>{!!$blog->contents!!}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-user"></i>{{"Tag"}}</a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                                    @foreach(\App\Models\ContentTag::whereContentId($blog->id)->take(3)->get() as $tag)
+                                    <li><a href="#"><i class="far fa-user"></i>
+                                                {{$tag->tag->tag}}
+                                            @endforeach </a></li>
+                                    {{--{{dd($blog->id)}}--}}
+{{--                                    {{dd(\App\Models\Comment::whereId($blog->id)->get())}}--}}
+                                    <li><a href="#"><i class="far fa-comments"></i>{{count(\App\Models\Comment::whereContentId($blog->id)->get())}} Comments</a></li>
                                 </ul>
+{{--                                {{count($blog->comments->whereId($blog->id))}}--}}
                             </div>
                         </article>
                         @endforeach

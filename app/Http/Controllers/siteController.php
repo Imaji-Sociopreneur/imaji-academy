@@ -22,6 +22,8 @@ class siteController extends Controller
      {
          $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(5);
          $tags= Tag::all();
+//         $comments=Comment::whereContentId($id)->get();
+//         $commentcount=count($comments);
          $contenttag=ContentTag::all();
 //         dd($blogs);
          return view('pages.site.blog',compact('blogs','tags','contenttag'));
