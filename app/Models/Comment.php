@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property integer $id
@@ -15,23 +16,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
-    /**
-     * The "type" of the auto-incrementing ID.
-     * 
-     * @var string
-     */
+
     protected $keyType = 'integer';
 
-    /**
-     * @var array
-     */
+
     protected $fillable = ['content_id', 'comment', 'created_at', 'updated_at', 'name'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
     public function content()
     {
         return $this->belongsTo('App\Models\Content');
     }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('comment', 'like', '%'.$query.'%');
+    }
+
 }

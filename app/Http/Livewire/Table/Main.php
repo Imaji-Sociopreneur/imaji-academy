@@ -178,6 +178,21 @@ class Main extends Component
                     ])
                 ];
                 break;
+            case 'comment':
+                $comments = $this->model::search($this->search)
+                    ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->paginate($this->perPage);
+
+                return [
+                    "view" => 'livewire.table.comment',
+                    "comments" => $comments,
+                    "data" => array_to_object([
+                        'href' => [
+                            'create_new' => route('admin.comment.index')
+                        ]
+                    ])
+                ];
+                break;
 
             default:
                 # code...
