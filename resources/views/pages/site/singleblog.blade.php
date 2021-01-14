@@ -85,10 +85,24 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
+{{--                                                    {{dd($c)}}--}}
                                                     <a href="#">{{$c->name}}</a>
+{{--                                                    @if(\Illuminate\Support\Facades\Auth::user())--}}
                                                 </h5>
                                                 <p class="date">{{$c->created_at->format('F j, Y  g:i a')}}</p>
                                             </div>
+{{--                                            {{dd($b->id)}}--}}
+                                            @isset($c ->id_user)
+                                            @if($c -> id_user==\Illuminate\Support\Facades\Auth::id())
+                                            <div class="reply-btn">
+                                                <form action="{{route('comment-destroy', [$c->id, $b->id]) }}" method="POST" style="display: inline">
+                                                    <input type="hidden" name="_method">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <button class="btn btn-danger"><i class="fa fa-16px fa-trash"></i> Hapus</button>
+                                                </form>
+                                            </div>
+                                            @endif
+                                            @endisset
                                         </div>
                                     </div>
                                 </div>
@@ -107,11 +121,13 @@
                                         placeholder="Write Comment" required></textarea>
                                     </div>
                                 </div>
+                                @if(\Illuminate\Support\Facades\Auth::id()==null)
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control" name="name" id="name" type="text" placeholder="Name">
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="button btn_1 button-contactForm">Send Message</button>

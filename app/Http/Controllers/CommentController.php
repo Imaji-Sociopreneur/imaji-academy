@@ -26,10 +26,21 @@ class CommentController extends Controller
 
     public function store(Request $request, $id)
     {
-        $this->comments['name'] = $request->name;
-        $this->comments['content_id'] = (int)$id;
-        $this->comments['comment'] = $request->comment;
-//        dd($comments);
+        if (Auth::user()){
+            $this->comments['name'] = Auth::user()->whereId(Auth::id())->pluck('name');
+            $this->comments['name'] = $this->comments['name'][0];
+            $this->comments['content_id'] = (int)$id;
+            $this->comments['comment'] = $request->comment;
+            $this->comments['id_user'] = Auth::id();
+        }
+            elseif (Auth::user()==null){
+                $this->comments['name'] = $request->name;
+                $this->comments['content_id'] = (int)$id;
+                $this->comments['comment'] = $request->comment;
+            }
+
+//        dd($this->comments['id_user']);
+//        dd($this->comments);
         Comment::create($this->comments);
         return redirect(route('show',$id));
 
@@ -54,8 +65,9 @@ class CommentController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy($id,$blog)
     {
         Comment::find($id)->delete();
+        return redirect(route('show',$blog));
     }
 }

@@ -4,6 +4,11 @@
             "href" => "admin.dashboard",
             "text" => "Dashboard",
             "is_multi" => false,
+        ],
+        [
+            "href" => "admin.",
+            "text" => "Dashboard User",
+            "is_multi" => false,
         ]
         ];
 

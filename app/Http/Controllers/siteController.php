@@ -66,6 +66,6 @@ class siteController extends Controller
             abort(404);
         }
 
-        return view('pages.site.singleblog', compact('datareal','blogs','comments','commentcount'));
+        return view('pages.site.singleblog', compact('datareal','b','comments','commentcount'));
     }
 }

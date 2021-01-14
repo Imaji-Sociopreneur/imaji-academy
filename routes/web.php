@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\siteController;
 use App\Models\Content;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\ApiTokenController;
@@ -37,11 +38,8 @@ Route::get('/', function () {
     $jsonurl= "data.json";
     $json = file_get_contents($jsonurl);
     $data = json_decode($json);
-
-
-
     $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(3);
-    $testimonials=\App\Models\Testimonial::all();
+    $testimonials= Testimonial::all();
     return view('welcome',compact('blogs','data','testimonials'));
 });
 
@@ -57,10 +55,18 @@ Route::get('berita',[siteController::class,'berita'])->name('berita');
 Route::get('singleblog',[siteController::class,'singleblog'])->name('singleblog');
 Route::resource('comment', CommentController::class)->only(['index']);
 Route::post('comment/{id}/',[CommentController::class,'store'])->name('comment-store');
-Route::get('comment/{id}/',[CommentController::class,'destroy'])->name('comment-destroy');
+Route::post('comment/{id}/{blog}/',[CommentController::class,'destroy'])->name('comment-destroy');
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
+    Route::get('/welcome', function () {
+        $jsonurl= "data.json";
+        $json = file_get_contents($jsonurl);
+        $data = json_decode($json);
+        $blogs=Content::whereType(1)->whereStatus('accepted')->paginate(3);
+        $testimonials= Testimonial::all();
+        return view('welcome',compact('blogs','data','testimonials'));
+    });
 
     Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
         Route::group(['middleware' => ['auth', 'verified']], function () {
