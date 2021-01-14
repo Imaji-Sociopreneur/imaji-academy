@@ -37,11 +37,10 @@
                                 <a class="d-inline-block" href="single-blog.html">
                                     <h2>{{$brt->title}}</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>{!! $brt->contents !!}</p>
                                 <ul class="blog-info-link">
-                                    @foreach($tags as $tag)
-                                    <li><a href="#"><i class="far fa-user"></i>{{$tag->tag}}</a></li>
+                                    @foreach(\App\Models\ContentTag::whereContentId($brt->id)->take(3)->get() as $tag)
+                                    <li><a href="#"><i class="far fa-user"></i>{{$tag->tag->tag}}</a></li>
                                     @endforeach
                                     <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
                                 </ul>
