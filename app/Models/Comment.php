@@ -19,7 +19,7 @@ class Comment extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -43,5 +43,10 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'id_user');
+    }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('comment', 'like', '%'.$query.'%');
     }
 }
