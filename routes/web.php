@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Site;
 use App\Http\Controllers\siteController;
 use App\Models\Content;
 use App\Models\Testimonial;
@@ -46,6 +47,7 @@ Route::get('/', function () {
 Route::get('berita/tag/{tag}/', 'Site@newsTagLink')->name('newsTagLink');
 Route::get('blog/tag/{tag}/', 'Site@blogTagLink')->name('blogTagLink');
 Route::get('blog/show/{id}',[siteController::class,'show'])->name('show');
+Route::get('berita/show/{id}',[Site::class,'show'])->name('shownews');
 Route::post('blog/search/', 'Site@blogSearchPost')->name('blogSearchPost');
 Route::get('blog/search/{search}', 'Site@blogSearch')->name('blogSearch');
 Route::post('berita/search/', 'Site@beritaSearchPost')->name('beritaSearchPost');
@@ -56,8 +58,10 @@ Route::get('blog',[siteController::class,'blog'])->name('blog');
 Route::get('berita',[siteController::class,'berita'])->name('berita');
 Route::get('singleblog',[siteController::class,'singleblog'])->name('singleblog');
 Route::resource('comment', CommentController::class)->only(['index']);
-Route::post('comment/{id}/',[CommentController::class,'store'])->name('comment-store');
-Route::post('comment/{id}/{blog}/',[CommentController::class,'destroy'])->name('comment-destroy');
+Route::post('blog/comment/{id}/',[CommentController::class,'store'])->name('comment-store-blog');
+Route::post('berita/comment/{id}/',[CommentController::class,'store'])->name('comment-store-news');
+Route::post('blog/comment/{id}/{blog}/',[CommentController::class,'destroy'])->name('comment-destroy-blog');
+Route::post('news/comment/{id}/{berita}/',[CommentController::class,'destroy'])->name('comment-destroy-news');
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');

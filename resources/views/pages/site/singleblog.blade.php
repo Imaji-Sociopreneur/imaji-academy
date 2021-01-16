@@ -95,7 +95,7 @@
                                             @isset($c ->id_user)
                                             @if($c -> id_user==\Illuminate\Support\Facades\Auth::id())
                                             <div class="reply-btn">
-                                                <form action="{{route('comment-destroy', [$c->id, $b->id]) }}" method="POST" style="display: inline">
+                                                <form action="{{route('comment-destroy-blog', [$c->id, $b->id]) }}" method="POST" style="display: inline">
                                                     <input type="hidden" name="_method">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <button class="btn btn-danger"><i class="fa fa-16px fa-trash"></i> Hapus</button>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>
-                        <form method='post' class="form-contact comment_form"  action="{{route('comment-store',$datareal->id)}}" id="commentForm">
+                        <form method='post' class="form-contact comment_form"  action="{{route('comment-store-blog',$datareal->id)}}" id="commentForm">
                             @csrf
                             <div class="row">
                                 <div class="col-12">

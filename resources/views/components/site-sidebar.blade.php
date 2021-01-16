@@ -49,7 +49,7 @@
 
         <aside class="single_sidebar_widget popular_post_widget">
             <h3 class="widget_title">Recent Post</h3>
-            @foreach(Site::getRecentPost() as $rp)
+            @foreach(Site::getRecentPostBlog() as $rp)
             <div class="media post_item">
                 <img src="{{asset('storage/content/'.$rp->thumbnail)}}" style="width: 120px; height: 120px;"   alt="post">
                 <div class="media-body">
@@ -61,7 +61,7 @@
             </div>
             @endforeach
         </aside>
-            
+
         @elseif(Request::segment(1) == 'berita')
             <aside class="single_sidebar_widget post_category_widget">
                 <h4 class="widget_title">Category</h4>
@@ -79,11 +79,11 @@
 
             <aside class="single_sidebar_widget popular_post_widget">
                 <h3 class="widget_title">Recent Post</h3>
-                @foreach(Site::getRecentPost() as $rp)
+                @foreach(Site::getRecentPostNews() as $rp)
                     <div class="media post_item">
                         <img src="{{asset('storage/content/'.$rp->thumbnail)}}" style="width: 120px; height: 120px;"   alt="post">
                         <div class="media-body">
-                            <a href="{{route('show',$rp->id)}}">
+                            <a href="{{route('shownews',$rp->id)}}">
                                 <h3>{{$rp->title}}</h3>
                             </a>
                             <p>{{$rp->created_at->format('F j, Y ')}}</p>

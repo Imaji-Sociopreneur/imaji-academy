@@ -38,12 +38,18 @@ class CommentController extends Controller
                 $this->comments['content_id'] = (int)$id;
                 $this->comments['comment'] = $request->comment;
             }
-
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
 //        dd($this->comments['id_user']);
 //        dd($this->comments);
         Comment::create($this->comments);
-        return redirect(route('show',$id));
-
+//        dd($uri_segments);
+        if($uri_segments[1] == 'blog'){
+            return redirect(route('show',$id));
+        }
+        else{
+            return redirect(route('shownews',$id));
+        }
     }
 
 
@@ -67,7 +73,16 @@ class CommentController extends Controller
 
     public function destroy($id,$blog)
     {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+
         Comment::find($id)->delete();
-        return redirect(route('show',$blog));
+        if($uri_segments[1] == 'blog'){
+            return redirect(route('show',$blog));
+        }else {
+            return redirect(route('shownews',$blog));
+        }
+
+
     }
 }

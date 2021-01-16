@@ -36,7 +36,7 @@
                                     </div>
 
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="single-blog.html">
+                                        <a class="d-inline-block" href="{{route('shownews',$brt->id)}}">
                                             <h2>{{$brt->title}}</h2>
                                         </a>
                                         <p>{!! $brt->contents !!}</p>
@@ -44,7 +44,7 @@
                                             @foreach(\App\Models\ContentTag::whereContentId($brt->id)->take(3)->get() as $tag)
                                             <li><a href="#"><i class="far fa-user"></i>{{$tag->tag->tag}}</a></li>
                                             @endforeach
-                                            <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                                            <li><a href="#"><i class="far fa-comments"></i> {{count(\App\Models\Comment::whereContentId($brt->id)->get())}} Comments</a></li>
                                         </ul>
                                     </div>
                                 </article>
@@ -63,7 +63,7 @@
                                         </div>
 
                                         <div class="blog_details">
-                                            <a class="d-inline-block" href="single-blog.html">
+                                            <a class="d-inline-block" href="{{route('shownews',$brt->id)}}">
                                                 <h2>{{$brt->title}}</h2>
                                             </a>
                                             <p>{!! $brt->contents !!}</p>
@@ -71,7 +71,7 @@
                                                 @foreach(\App\Models\ContentTag::whereContentId($brt->id)->take(3)->get() as $tag)
                                                     <li><a href="#"><i class="far fa-user"></i>{{$tag->tag->tag}}</a></li>
                                                 @endforeach
-                                                <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                                                <li><a href="#"><i class="far fa-comments"></i>{{count(\App\Models\Comment::whereContentId($brt->id)->get())}} Comments</a></li>
                                             </ul>
                                         </div>
                                     </article>

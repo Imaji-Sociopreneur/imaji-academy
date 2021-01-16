@@ -52,6 +52,8 @@ class siteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+//    Show nya punya Blog
     public function show($id)
     {
         $blogs=Content::whereType(1)->whereStatus('accepted')->get();

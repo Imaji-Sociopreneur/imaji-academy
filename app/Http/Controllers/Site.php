@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Comment;
 use App\Models\Content;
 use App\Models\ContentTag;
 use App\Models\Tag;
@@ -15,9 +16,9 @@ class Site extends Facade
     public static function getTags(){
         return Tag::get();
     }
-    public static function newsGetTags(){
-        return Tag::get();
-    }
+//    public static function getTagsNews(){
+//        return Tag::get();
+//    }
     public function blogTagLink($tag){
 
         $ctags = ContentTag::whereTagId($tag)->pluck('content_id');
@@ -53,8 +54,12 @@ class Site extends Facade
         return view('pages.site.berita',compact('contents','tags','contenttag','isset'));
     }
 
-    public static function getRecentPost(){
-        return Content::whereStatus('accepted')->orderBy('created_at','desc')->take(4)->get();
+    public static function getRecentPostBlog(){
+        return Content::whereType(1)->whereStatus('accepted')->orderBy('created_at','desc')->take(4)->get();
+    }
+
+    public static function getRecentPostNews(){
+        return Content::whereType(3)->whereStatus('accepted')->orderBy('created_at','desc')->take(4)->get();
     }
 
     public function blogSearchPost(Request $request){
@@ -75,5 +80,25 @@ class Site extends Facade
         $berita= Content::orderBy('created_at','desc')->whereStatus('accepted')->whereType(3)->where('title','LIKE',"%$search%")->paginate(15);
         $tags= Tag::all();
         return view('pages.site.berita',compact('berita','tags'));
+    }
+
+//    Show punya News
+    public function show($id){
+        $news=Content::whereType(3)->whereStatus('accepted')->get();
+        $comments=Comment::whereContentId($id)->get();
+        $commentcount=count($comments);
+        $datarealnews = [];
+
+        foreach ($news as $b)  {
+            if ($id == $b->id) {
+                $datarealnews = $b;
+                break;
+            }
+        }
+        if (!$datarealnews) {
+            abort(404);
+        }
+
+        return view('pages.site.singlenews', compact('datarealnews','b','comments','commentcount'));
     }
 }
