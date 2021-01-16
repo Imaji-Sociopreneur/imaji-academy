@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Content;
+use App\Models\ContentTag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Facade;
@@ -14,6 +15,44 @@ class Site extends Facade
     public static function getTags(){
         return Tag::get();
     }
+    public static function newsGetTags(){
+        return Tag::get();
+    }
+    public function blogTagLink($tag){
+
+        $ctags = ContentTag::whereTagId($tag)->pluck('content_id');
+
+        $contents = array();
+
+        foreach ($ctags as $c) {
+            $blogee = Content::whereId($c)->whereType(1)->get();
+            $contents[] = $blogee;
+        }
+        $isset=1;
+//        $blogs = $blogs[0];
+        $tags= Tag::all();
+        $contenttag=ContentTag::all();
+//         dd($blogs);
+        return view('pages.site.blog',compact('contents','tags','contenttag','isset'));
+    }
+    public function newsTagLink($tag){
+
+        $ctags = ContentTag::whereTagId($tag)->pluck('content_id');
+
+        $contents = array();
+
+        foreach ($ctags as $c) {
+            $blogee = Content::whereId($c)->whereType(3)->get();
+            $contents[] = $blogee;
+        }
+        $isset=1;
+//        $blogs = $blogs[0];
+        $tags= Tag::all();
+        $contenttag=ContentTag::all();
+//         dd($blogs);
+        return view('pages.site.berita',compact('contents','tags','contenttag','isset'));
+    }
+
     public static function getRecentPost(){
         return Content::whereStatus('accepted')->orderBy('created_at','desc')->take(4)->get();
     }

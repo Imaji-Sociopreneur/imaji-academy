@@ -32,12 +32,13 @@
             @endif
         </aside>
 
+        @if(Request::segment(1) == 'blog')
         <aside class="single_sidebar_widget post_category_widget">
             <h4 class="widget_title">Category</h4>
             <ul class="list cat-list">
                 @foreach(Site::getTags() as $t)
                 <li>
-                    <a href="#" class="d-flex">
+                    <a href="{{route('blogTagLink',$t->id)}}" class="d-flex">
                         <p>{{$t->tag}}</p>
                         <p>({{$t->contentTags->count()}})</p>
                     </a>
@@ -50,16 +51,47 @@
             <h3 class="widget_title">Recent Post</h3>
             @foreach(Site::getRecentPost() as $rp)
             <div class="media post_item">
-                <img src="{{asset('frontend/img/post/post_1.png')}}" alt="post">
+                <img src="{{asset('storage/content/'.$rp->thumbnail)}}" style="width: 120px; height: 120px;"   alt="post">
                 <div class="media-body">
-                    <a href="single-blog.html">
+                    <a href="{{route('show',$rp->id)}}">
                         <h3>{{$rp->title}}</h3>
                     </a>
-                    <p>January 12, 2019</p>
+                    <p>{{$rp->created_at->format('F j, Y ')}}</p>
                 </div>
             </div>
             @endforeach
         </aside>
+            
+        @elseif(Request::segment(1) == 'berita')
+            <aside class="single_sidebar_widget post_category_widget">
+                <h4 class="widget_title">Category</h4>
+                <ul class="list cat-list">
+                    @foreach(Site::getTags() as $t)
+                        <li>
+                            <a href="{{route('newsTagLink',$t->id)}}" class="d-flex">
+                                <p>{{$t->tag}}</p>
+                                <p>({{$t->contentTags->count()}})</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </aside>
+
+            <aside class="single_sidebar_widget popular_post_widget">
+                <h3 class="widget_title">Recent Post</h3>
+                @foreach(Site::getRecentPost() as $rp)
+                    <div class="media post_item">
+                        <img src="{{asset('storage/content/'.$rp->thumbnail)}}" style="width: 120px; height: 120px;"   alt="post">
+                        <div class="media-body">
+                            <a href="{{route('show',$rp->id)}}">
+                                <h3>{{$rp->title}}</h3>
+                            </a>
+                            <p>{{$rp->created_at->format('F j, Y ')}}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </aside>
+        @endif
 {{--        <aside class="single_sidebar_widget tag_cloud_widget">--}}
 {{--            <h4 class="widget_title">Tag Clouds</h4>--}}
 {{--            <ul class="list">--}}

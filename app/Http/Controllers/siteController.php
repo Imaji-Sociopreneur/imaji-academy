@@ -25,14 +25,17 @@ class siteController extends Controller
 //         $comments=Comment::whereContentId($id)->get();
 //         $commentcount=count($comments);
          $contenttag=ContentTag::all();
+         $paginate=1;
 //         dd($blogs);
-         return view('pages.site.blog',compact('blogs','tags','contenttag'));
+         return view('pages.site.blog',compact('blogs','tags','contenttag','paginate'));
      }
     public function berita()
     {
         $berita=Content::whereType(3)->whereStatus('accepted')->paginate(5);
         $tags=Tag::all();
-        return view('pages.site.berita',compact('berita','tags'));
+        $contenttag=ContentTag::all();
+        $paginate=1;
+        return view('pages.site.berita',compact('berita','tags','contenttag','paginate'));
     }
     public function singleblog($id)
     {
